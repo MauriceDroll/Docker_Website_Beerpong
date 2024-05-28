@@ -16,7 +16,7 @@ setup(
         #('share/' + package_name + '/pkg_website_beerpong/launch/', ['launch/website.launch.py']),
         #('share/pkg_website_beerpong/pkg_website_beerpong/launch/', ['website.launch.py']),
         #(os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*')))
-        (os.path.join('src', package_name,package_name, 'launch')),
+        #(os.path.join('src', package_name,package_name, 'launch')),
     ],  
     install_requires=['setuptools'],
     zip_safe=True,

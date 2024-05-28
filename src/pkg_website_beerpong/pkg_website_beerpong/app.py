@@ -1,6 +1,8 @@
 from flask import Flask, render_template,request, jsonify
 from SelectTablePublisher import SelectTablePublisher
 from SelectedTable import SelectedTable
+#from SelectTableService import  MinimalClientAsyn
+from SelectTableServer import MinimalService
 
 app = Flask(__name__)
 
@@ -17,20 +19,28 @@ def button_click():
     if (button_id == "1"):
         print("Tisch 1 wurde ausgewählt!")
         SelectedTable.table_id = 1
-        SelectTablePublisher.main(args=None)
+        #SelectTablePublisher.main(args=None)
+        #MinimalClientAsync.sendServiceRequest()
         #SelectTablePublisher.main(1)
         
     elif (button_id == "2"):
         SelectedTable.table_id = 2
-        SelectTablePublisher.main(args=None)
+        #electTablePublisher.main(args=None)
         #SelectTablePublisher(2)
+        #MinimalClientAsync.sendServiceRequest()
+
         print("Tisch 2 wurde ausgewählt!")
         
     elif (button_id == "3"):
         SelectedTable.table_id = 3
-        SelectTablePublisher.main(args=None)
+        #SelectTablePublisher.main(args=None)
+        
+        #MinimalClientAsync.sendServiceRequest()
+
         #SelectTablePublisher(3)
         print("Tisch 3 wurde ausgewählt!")
+        
+    MinimalService.main()
     
     return jsonify({"message": f"Tisch {button_id} was selected!"})
 
