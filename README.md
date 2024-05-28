@@ -1,13 +1,16 @@
-# How to Start
+# How to Start the docker
 
-source start_docker.sh
+    1. Navigation to the cloned repo on your local system
+    2. Open Terminal
+    3. Type in the command and press enter:
+        source start_docker.sh
 
-# navigate to the folder: src/pkg_website_beerpong
-start it with: python3 app.py
+# How to Start the website
 
-# Ongoing problem, website crashes if in one session a second table is clicked
--> Publisher of ROs is the problem (SelectTablePublisher) 
--> rclpy is not correctly shutdown (seems to be the problem).
+The website runs with flask and python3.
+
+    1. Navigate to src/pkg_website_beerpong/pkg_website_beerpong
+    2. start it with: python3 app.py
 
 
 # How to access the website
