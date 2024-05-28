@@ -25,6 +25,7 @@ class MinimalService(Node):
         rclpy.spin(minimal_service)
 
         rclpy.shutdown()
+        SelectedTable.table_id = 0
 
 
 if __name__ == '__main__':

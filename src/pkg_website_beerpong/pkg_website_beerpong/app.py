@@ -42,6 +42,7 @@ def button_click():
         
     MinimalService.main()
     
+    
     return jsonify({"message": f"Tisch {button_id} was selected!"})
 
 @app.route('/init', methods=['POST'])
