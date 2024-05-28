@@ -1,5 +1,8 @@
 from setuptools import find_packages, setup
 
+import os
+from glob import glob
+
 package_name = 'pkg_website_beerpong'
 
 setup(
@@ -10,6 +13,9 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        #('share/' + package_name + '/pkg_website_beerpong/launch/', ['launch/website.launch.py']),
+        #('share/pkg_website_beerpong/pkg_website_beerpong/launch/', ['website.launch.py']),
+        (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*')))
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -20,6 +26,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            #'website_beerpong = pkg_website_beerpong.app:main'
             'website_beerpong = pkg_website_beerpong.website_beerpong:main'
         ],
     },

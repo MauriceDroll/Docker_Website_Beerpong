@@ -27,9 +27,16 @@ RUN pip install --no-cache-dir --upgrade pip && \
 USER $USER 
 RUN rosdep update
 
+
+
 RUN mkdir -p /home/$USER/ros_ws/src
 
 WORKDIR /home/$USER/ros_ws
+RUN colcon build
 CMD /bin/bash
+
+#WORKDIR /home/robot/ros_ws/src/
+
+#ENTRYPOINT ["python3", "pkg_website_beerpong/pkg_website_beerpong/app.py"]
 
 
