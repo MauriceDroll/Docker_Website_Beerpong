@@ -34,6 +34,12 @@ def button_click():
     
     return jsonify({"message": f"Tisch {button_id} was selected!"})
 
+@app.route('/init', methods=['POST'])
+def init():
+    SelectedTable.table_id = 0
+    SelectTablePublisher.main(args=None)
+    return jsonify({"message": f"Init!"})
+
 if __name__ == '__main__':
     app.run(debug=True,host='127.0.0.1', port=8080)
     

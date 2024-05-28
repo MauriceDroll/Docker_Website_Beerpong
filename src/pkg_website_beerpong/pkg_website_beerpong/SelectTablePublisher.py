@@ -10,6 +10,9 @@ class SelectTablePublisher(Node):
         self.publisher_ = self.create_publisher(Int16, 'selected_table', 1)
         timer_period = 2.0  # Sekunden
         self.timer_callback()
+        self.get_logger().info('Init ausgeführt')
+
+
         #self.i = 0
         
     def timer_callback(self):
@@ -22,18 +25,21 @@ class SelectTablePublisher(Node):
     
     @staticmethod
     def main(args=None):
-        rclpy.init(args=args)
-        node = SelectTablePublisher()
+            
         try:
-            rclpy.spin(node)
-            node.destroy_node()
+            rclpy.init(args=args)
+            node_website = SelectTablePublisher()
+            rclpy.spin(node_website)
+            node_website.destroy_node()
             rclpy.shutdown()
-        except KeyboardInterrupt:
+        except:
+            #rclpy.init(args=args)
+            node_website = SelectTablePublisher()
+            rclpy.spin(node_website)
+            node_website.destroy_node()
+            rclpy.shutdown()
             pass
-        finally:
-            node.destroy_node()
-            rclpy.shutdown()
-            self.get_logger().info('Node wurde zerstört!')
+
 
 if __name__ == '__main__':
     main()

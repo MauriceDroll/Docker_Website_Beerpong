@@ -8,7 +8,9 @@
     <!-- jQuery einbinden -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
+<body onload="init()">
+    <h1>Beerpong Neobotix</h1>
+    <h2>Bitte wählen sie einen Tisch:</h2>
     <div class="container">
         <button id="button1" onclick="buttonClicked(1)">Tisch 1</button>
         <button id="button2" onclick="buttonClicked(2)">Tisch 2</button>
@@ -18,6 +20,11 @@
     <script>
         function buttonClicked(buttonId) {
             $.post('/button_click', { button_id: buttonId }, function(response) {
+                alert(response.message);
+            });
+        }
+        function init() {
+            $.post('/init', function(response) {
                 alert(response.message);
             });
         }

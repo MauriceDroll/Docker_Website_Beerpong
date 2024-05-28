@@ -21,6 +21,9 @@ RUN groupadd -g "$GID" "$USER"  && \
 
 RUN echo "export ROS_DOMAIN_ID=${DOMAIN_ID}" >> /etc/bash.bashrc
 
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir flask
+
 USER $USER 
 RUN rosdep update
 
