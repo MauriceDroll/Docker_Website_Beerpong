@@ -4,6 +4,9 @@ from SelectedTable import SelectedTable
 #from SelectTableService import  MinimalClientAsyn
 from SelectTableServer import MinimalService
 
+import rclpy
+from rclpy.node import Node
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -39,8 +42,17 @@ def button_click():
 
         #SelectTablePublisher(3)
         print("Tisch 3 wurde ausgewählt!")
+    
+    
+    
+    if hasattr(None,'server'):
+        server.shutdown_node()
+    else:
+        server = MinimalService()
         
-    MinimalService.main()
+    #server.main()
+    rclpy.spin(server)
+    #MinimalService.main()
     
     
     return jsonify({"message": f"Tisch {button_id} was selected!"})
