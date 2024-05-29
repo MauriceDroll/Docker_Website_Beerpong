@@ -33,6 +33,7 @@ RUN mkdir -p /home/$USER/ros_ws/src
 
 WORKDIR /home/$USER/ros_ws
 RUN colcon build
+#RUN install/setup.bash
 CMD /bin/bash
 
 #WORKDIR /home/robot/ros_ws/src/
