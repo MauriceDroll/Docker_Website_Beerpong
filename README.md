@@ -1,3 +1,7 @@
+# Image of website
+
+![alt text](image.png)
+
 # How to Start the docker
 
     1. Navigation to the cloned repo on your local system
@@ -19,6 +23,8 @@ The website runs with flask and python3.
 # How to access the website
 
 navigate in your browser to: http://127.0.0.1:8080/
+
+
 
 
 # How to request the service /table_server
