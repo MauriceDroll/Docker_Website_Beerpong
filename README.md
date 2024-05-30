@@ -9,8 +9,11 @@
 
 The website runs with flask and python3.
 
-    1. Navigate to src/pkg_website_beerpong/pkg_website_beerpong
-    2. start it with: python3 app.py
+    1. Navigate to ros2_ws
+    2. Colcon build
+    3. source install/setup.bash
+    4. Navigate to src/pkg_website_beerpong/pkg_website_beerpong
+    5. start it with: python3 app.py
 
 
 # How to access the website
