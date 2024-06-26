@@ -27,8 +27,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            #'website_beerpong = pkg_website_beerpong.app:main'
-            'website_beerpong = pkg_website_beerpong.website_beerpong:main'
+            'website_beerpong = pkg_website_beerpong.app:main'
+            #'website_beerpong = pkg_website_beerpong.website_beerpong:main'
         ],
     },
 )

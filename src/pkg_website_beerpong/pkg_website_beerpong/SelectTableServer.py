@@ -17,7 +17,7 @@ class MinimalService(Node):
 
     def selectedTable_callback(self, request, response):
         response.table_id = SelectedTable.table_id
-
+        print("Liefere response zurück")
         return response
     
     def shutdown_node(self):
@@ -41,6 +41,8 @@ class MinimalService(Node):
             node.destroy_node()
             if not rclpy.ok():
                 rclpy.shutdown()  
+        SelectedTable.table_id = 0
+
 
 
 if __name__ == "__main__":
