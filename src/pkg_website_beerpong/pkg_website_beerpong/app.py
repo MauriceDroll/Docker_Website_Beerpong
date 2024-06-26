@@ -1,5 +1,5 @@
 from flask import Flask, render_template,request, jsonify
-from SelectTablePublisher import SelectTablePublisher
+#from SelectTablePublisher import SelectTablePublisher
 from SelectedTable import SelectedTable
 #from SelectTableService import  MinimalClientAsyn
 from SelectTableServer import MinimalService
@@ -8,6 +8,7 @@ import rclpy
 from rclpy.node import Node
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def home():
@@ -18,41 +19,51 @@ def button_click():
     button_id = request.form['button_id']
     
     # Hier kannst du die gewünschte Methode basierend auf der Button-ID aufrufen
-    # call my method
     if (button_id == "1"):
         print("Tisch 1 wurde ausgewählt!")
         SelectedTable.table_id = 1
-        #SelectTablePublisher.main(args=None)
-        #MinimalClientAsync.sendServiceRequest()
-        #SelectTablePublisher.main(1)
+
         
     elif (button_id == "2"):
         SelectedTable.table_id = 2
-        #electTablePublisher.main(args=None)
-        #SelectTablePublisher(2)
-        #MinimalClientAsync.sendServiceRequest()
+
 
         print("Tisch 2 wurde ausgewählt!")
         
     elif (button_id == "3"):
         SelectedTable.table_id = 3
-        #SelectTablePublisher.main(args=None)
-        
-        #MinimalClientAsync.sendServiceRequest()
 
-        #SelectTablePublisher(3)
         print("Tisch 3 wurde ausgewählt!")
     
     
     
-    if hasattr(None,'server'):
-        server.shutdown_node()
-    else:
-        server = MinimalService()
-        
+    #if hasattr(None,'server'):
+
+    # wenn Service bereits läuft
+    #if rclpy.ok():
+    #    print("Hauptklasse: Service wird zerstört")
+    #    rclpy.shutdown()
+
+
+    #else:
+    #    server = MinimalService()
+    #    rclpy.spin(server)
+
+    #server = MinimalService()
+    MinimalService.main()
     #server.main()
-    rclpy.spin(server)
+    
+    
+    
+    
+    #rclpy.spin(server)
+    #rclpy.shutdown()
+
+
+    #server.main()
+    #rclpy.spin(server)
     #MinimalService.main()
+    
     
     
     return jsonify({"message": f"Tisch {button_id} was selected!"})
@@ -60,7 +71,9 @@ def button_click():
 @app.route('/init', methods=['POST'])
 def init():
     SelectedTable.table_id = 0
-    SelectTablePublisher.main(args=None)
+    #SelectTablePublisher.main(args=None)
+    print("ROS Kontext in Ordnung",rclpy.ok())
+
     return jsonify({"message": f"Init!"})
 
 if __name__ == '__main__':
