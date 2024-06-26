@@ -16,6 +16,7 @@ class MinimalService(Node):
         print("Node wurde initialisiert: table_server")
 
     def selectedTable_callback(self, request, response):
+        SelectedTable.service_processed = True
         response.table_id = SelectedTable.table_id
         print("Liefere response zurück")
         return response
@@ -34,7 +35,12 @@ class MinimalService(Node):
         try:
             #rclpy.spin(node)
             #rclpy.spin('table_server')
-            rclpy.spin(node)
+
+            #rclpy.spin(node)
+            while not SelectedTable.service_processed and rclpy.ok():
+                rclpy.spin_once(node, timeout_sec=0.5)
+                print("Node spin once")
+
         except Exception as e:
             print(f"Ein Fehler ist aufgetreten: {e}")
         finally:
@@ -42,6 +48,8 @@ class MinimalService(Node):
             if not rclpy.ok():
                 rclpy.shutdown()  
         SelectedTable.table_id = 0
+        SelectedTable.service_processed = False
+
 
 
 
